@@ -1,4 +1,4 @@
-package com.example.listvieproductos.models;
+﻿package com.example.listvieproductos.models;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -126,6 +126,65 @@ public class Productos {
                     }
                 });
         o.addToRequestQueue(jsonObjectRequest);
+    }
+public static void update (final QueueUtils.QueueObject o) {
+        String url = "http://fipo.equisd.com/api/users.json";
+
+        StringRequest putRequest = new StringRequest(Request.Method.PUT, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Log.d("Response", response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                    }
+                }
+        ) {
+
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("first_name","Jeeny");
+                params.put("last_name","Yuliana");
+                params.put("avatar","xxx");
+
+                return params;
+            }
+
+        };
+
+        //o.addToRequestQueue(putRequest);
+    }
+
+    public static void delete (final QueueUtils.QueueObject o) {
+        String url = "http://fipo.equisd.com/api/users.json";
+        StringRequest deleteRequest = new StringRequest(Request.Method.DELETE, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Log.d("Response", response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error.
+
+                    }
+                }
+        );
+        //o.addToRequestQueue(deleteRequest);
     }
 
 }
